@@ -2,19 +2,17 @@
 buildscript {
     repositories {
         google()
-        maven { url 'https://maven.google.com' }
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.6.4'
     }
 }
 
 allprojects {
     repositories {
         google()
-        maven { url 'https://maven.google.com' }
-        jcenter()
+        mavenCentral()
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
     }
 }
