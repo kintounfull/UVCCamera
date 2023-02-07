@@ -66,7 +66,6 @@ public final class MainActivity extends BaseActivity implements CameraDialog.Cam
 		mUVCCameraView.setAspectRatio(UVCCamera.DEFAULT_PREVIEW_WIDTH / (float)UVCCamera.DEFAULT_PREVIEW_HEIGHT);
 
 		mUSBMonitor = new USBMonitor(this, mOnDeviceConnectListener);
-
 	}
 
 	@Override
@@ -116,7 +115,11 @@ public final class MainActivity extends BaseActivity implements CameraDialog.Cam
 		public void onClick(final View view) {
 			synchronized (mSync) {
 				if (mUVCCamera == null) {
-					CameraDialog.showDialog(MainActivity.this);
+					if (checkPermissionCamera()) {
+						CameraDialog.showDialog(MainActivity.this);
+					} else {
+						Toast.makeText(MainActivity.this, R.string.permission_camera_request, Toast.LENGTH_LONG).show();
+					}
 				} else {
 					releaseCamera();
 				}
